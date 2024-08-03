@@ -40,17 +40,27 @@ void setup() {
 }
 
 void loop() {
-  analogWrite(FRONT_LEFT_SPEED, 60);  
-  analogWrite(FRONT_RIGHT_SPEED, 60);
-  analogWrite(BEHIND_LEFT_SPEED, 60);  
-  analogWrite(BEHIND_RIGHT_SPEED, 60);
-
-  doLeft();
-
-  delay(1000);
+  // 设置
+  analogWrite(FRONT_LEFT_SPEED, 30);  
+  analogWrite(FRONT_RIGHT_SPEED, 30);
+  analogWrite(BEHIND_LEFT_SPEED, 30);  
+  analogWrite(BEHIND_RIGHT_SPEED, 30);
 }
+// 停止
+void doStop(int time) {
+  digitalWrite(FRONT_LEFT_GO, LOW);
+  digitalWrite(FRONT_LEFT_BACK, LOW);
+  digitalWrite(FRONT_RIGHT_GO, LOW);
+  digitalWrite(FRONT_RIGHT_BACK, LOW);
+  digitalWrite(BEHIND_LEFT_GO, LOW);
+  digitalWrite(BEHIND_LEFT_BACK, LOW);
+  digitalWrite(BEHIND_RIGHT_GO, LOW);
+  digitalWrite(BEHIND_RIGHT_BACK, LOW);
+  delay(time * 100);
+}
+
 // 前进
-void doGo() {
+void doGo(int time) {
   digitalWrite(FRONT_LEFT_GO, HIGH);
   digitalWrite(FRONT_LEFT_BACK, LOW);
   digitalWrite(FRONT_RIGHT_GO, HIGH);
@@ -59,9 +69,10 @@ void doGo() {
   digitalWrite(BEHIND_LEFT_BACK, LOW);
   digitalWrite(BEHIND_RIGHT_GO, HIGH);
   digitalWrite(BEHIND_RIGHT_BACK, LOW);
+  delay(time * 100);
 }
 // 后退
-void doBack() {
+void doBack(int time) {
   digitalWrite(FRONT_LEFT_GO, LOW);
   digitalWrite(FRONT_LEFT_BACK, HIGH);
   digitalWrite(FRONT_RIGHT_GO, LOW);
@@ -70,9 +81,10 @@ void doBack() {
   digitalWrite(BEHIND_LEFT_BACK, HIGH);
   digitalWrite(BEHIND_RIGHT_GO, LOW);
   digitalWrite(BEHIND_RIGHT_BACK, HIGH);
+  delay(time * 100);
 }
 // 顺时针旋转
-void doClockwise() {
+void doClockwise(int time) {
   digitalWrite(FRONT_LEFT_GO, HIGH);
   digitalWrite(FRONT_LEFT_BACK, LOW);
   digitalWrite(FRONT_RIGHT_GO, LOW);
@@ -81,9 +93,10 @@ void doClockwise() {
   digitalWrite(BEHIND_LEFT_BACK, LOW);
   digitalWrite(BEHIND_RIGHT_GO, LOW);
   digitalWrite(BEHIND_RIGHT_BACK, HIGH);
+  delay(time * 100);
 }
 // 逆时针旋转
-void doAnticlockwise() {
+void doAnticlockwise(int time) {
   digitalWrite(FRONT_LEFT_GO, LOW);
   digitalWrite(FRONT_LEFT_BACK, HIGH);
   digitalWrite(FRONT_RIGHT_GO, HIGH);
@@ -92,10 +105,11 @@ void doAnticlockwise() {
   digitalWrite(BEHIND_LEFT_BACK, HIGH);
   digitalWrite(BEHIND_RIGHT_GO, HIGH);
   digitalWrite(BEHIND_RIGHT_BACK, LOW);
+  delay(time * 100);
 }
 
 // 左平移
-void doLeft() {
+void doLeft(int time) {
   digitalWrite(FRONT_LEFT_GO, LOW);
   digitalWrite(FRONT_LEFT_BACK, HIGH);
   digitalWrite(FRONT_RIGHT_GO, HIGH);
@@ -104,10 +118,11 @@ void doLeft() {
   digitalWrite(BEHIND_LEFT_BACK, LOW);
   digitalWrite(BEHIND_RIGHT_GO, LOW);
   digitalWrite(BEHIND_RIGHT_BACK, HIGH);
+  delay(time * 100);
 }
 
 // 右平移
-void doRight() {
+void doRight(int time) {
   digitalWrite(FRONT_LEFT_GO, HIGH);
   digitalWrite(FRONT_LEFT_BACK, LOW);
   digitalWrite(FRONT_RIGHT_GO, LOW);
@@ -116,4 +131,5 @@ void doRight() {
   digitalWrite(BEHIND_LEFT_BACK, HIGH);
   digitalWrite(BEHIND_RIGHT_GO, HIGH);
   digitalWrite(BEHIND_RIGHT_BACK, LOW);
+  delay(time * 100);
 }
